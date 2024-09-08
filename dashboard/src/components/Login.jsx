@@ -16,9 +16,12 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      console.log("submit button")
       await axios
         .post(
+         // "https://backend-hospital-qcd6.onrender.com/api/v1/user/login",
           "https://backend-hospital-qcd6.onrender.com/api/v1/user/login",
+          
           { email, password, confirmPassword, role: "Admin" },
           {
             withCredentials: true,
@@ -26,6 +29,7 @@ const Login = () => {
           }
         )
         .then((res) => {
+          console.log("yha hu")
           toast.success(res.data.message);
           setIsAuthenticated(true);
           navigateTo("/");
@@ -34,7 +38,8 @@ const Login = () => {
           setConfirmPassword("");
         });
     } catch (error) {
-      toast.error(error.response.data.message);
+      // toast.error(error.response);
+      console.log(error)
     }
   };
 

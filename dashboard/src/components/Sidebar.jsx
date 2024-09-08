@@ -17,8 +17,9 @@ const Sidebar = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
 
   const handleLogout = async () => {
+    console.log("hi")
     await axios
-      .get("https://backend-hospital-qcd6.onrender.com/api/v1/user/admin/logout", {
+      .get(" https://backend-hospital-qcd6.onrender.com/api/v1/user/admin/logout", {
         withCredentials: true,
       })
       .then((res) => {
@@ -26,6 +27,7 @@ const Sidebar = () => {
         setIsAuthenticated(false);
       })
       .catch((err) => {
+        console.log(err)
         toast.error(err.response.data.message);
       });
   };
